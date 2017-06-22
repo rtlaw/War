@@ -11,9 +11,7 @@ public class War
 	List<Integer> table = new ArrayList<Integer>();
 	public War()
 	{
-		inputDP();
-		
-	//	dealCards();
+		dealCards();
 		System.out.println("Starting decks:");
 		System.out.println("Player1 = " + deck1 + " (" + deck1.size() + ")");
 		System.out.println("Player2 = " + deck2 + " (" + deck2.size() + ")");
@@ -41,19 +39,6 @@ public class War
 				deck2.add(card);
 		}
 	}
-	private void inputDP()
-	{
-		int[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-		int[] tab2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-		for(int x: tab)
-		{
-			deck1.add(x);
-		}
-		for(int x: tab2)
-		{
-			deck2.add(x);
-		}
-	}
 	private int play()
 	{
 		while(deck1.size() != 0 && deck2.size() != 0)
@@ -68,9 +53,6 @@ public class War
 	}
 	private void singleRound()
 	{
-		
-		
-		
 			int player1 = deck1.remove(0);
 			int player2 = deck2.remove(0);
 			table.add(player1);
@@ -101,12 +83,7 @@ public class War
 						singleRound();
 					}
 				}
-				
-				
-			}
-		
-		
-			
+			}	
 	}
 	private void playerOneWon()
 	{
