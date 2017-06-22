@@ -1,3 +1,2 @@
 # War
-War card game
-Randomized the way of putting cards back
+War card game random way of putting cards back
