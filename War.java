@@ -2,6 +2,7 @@ package War;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+//DP
 public class War
 {
 	Random generator = new Random();
@@ -10,9 +11,7 @@ public class War
 	List<Integer> table = new ArrayList<Integer>();
 	public War()
 	{
-		//inputDP();
-		
-		dealCards();
+		inputDP();
 		System.out.println("Starting decks:");
 		System.out.println("Player1 = " + deck1 + " (" + deck1.size() + ")");
 		System.out.println("Player2 = " + deck2 + " (" + deck2.size() + ")");
@@ -21,24 +20,6 @@ public class War
 	public static void main(String[] args)
 	{
 		War war = new War();	
-	}
-	private void dealCards()
-	{
-		int[]tab = new int[13];
-		int card;
-		for(int i = 0; i < 52; i++)
-		{
-			do
-			{
-				card = generator.nextInt(13)+1;
-			}while(tab[card-1] == 4);
-			tab[card-1]++;
-			
-			if(i%2 == 0)
-				deck1.add(card);
-			else
-				deck2.add(card);
-		}
 	}
 	private void inputDP()
 	{
@@ -67,9 +48,6 @@ public class War
 	}
 	private void singleRound()
 	{
-		
-		
-		
 			int player1 = deck1.remove(0);
 			int player2 = deck2.remove(0);
 			table.add(player1);
@@ -91,18 +69,28 @@ public class War
 					playerOneWon();
 				else
 				{
-					if(deck1.size()>= 2 && deck2.size() >= 2)
+					if(deck1.size()>= 4 && deck2.size() >= 4)
 					{
 						table.add(deck1.remove(0));
 						table.add(deck2.remove(0));
+						table.add(deck1.remove(0));
+						table.add(deck2.remove(0));
+						table.add(deck1.remove(0));
+						table.add(deck2.remove(0));
+					}
+					else
+					{
+						while(Math.min(deck1.size(), deck2.size()) == 1)
+						{
+							table.add(deck1.remove(0));
+							table.add(deck2.remove(0));
+						}
+							
 					}
 					singleRound();
 				}
 				
-			}
-		
-		
-			
+			}		
 	}
 	private void playerOneWon()
 	{
